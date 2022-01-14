@@ -1,0 +1,17 @@
+name: Release
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+    paths:
+      - action.yaml
+jobs:
+  release:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Unsupervisedcom/action-release-action@v1
+        with:
+          token: ${{ secrets.DEPLOYER_CI_TOKEN }}
