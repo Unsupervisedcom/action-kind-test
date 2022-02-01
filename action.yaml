@@ -158,7 +158,7 @@ runs:
         skaffold run --tail --port-forward=user --verbosity=info > ${GITHUB_WORKSPACE}/skaffold-logs/app.txt &
     - name: Wait for ready
       if: inputs.wait-for-ports != ''
-      uses: Unsupervisedcom/actions-wait-for-ports@v1
+      uses: Unsupervisedcom/action-wait-for-ports@v1
       with:
         ports: ${{ inputs.wait-for-ports }}
         max-wait: ${{ inputs.max-wait }}
