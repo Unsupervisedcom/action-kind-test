@@ -146,12 +146,14 @@ runs:
       env:
         GITHUB_TOKEN: ${{ inputs.token }}
         HELM_EXPERIMENTAL_OCI: 1
+        GOOGLE_APPLICATION_CREDENTIALS: ${{steps.auth.outputs.credentials_file_path}}
       shell: bash
       run: ${{ github.action_path }}/run-dependencies.sh ${{ inputs.dependencies }}
     - name: Run app via skaffold
       env:
         SKAFFOLD_ACTIONS: true
         HELM_EXPERIMENTAL_OCI: 1
+        GOOGLE_APPLICATION_CREDENTIALS: ${{steps.auth.outputs.credentials_file_path}}
       shell: bash
       working-directory: app
       run: |
